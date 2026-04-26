@@ -1,16 +1,62 @@
-# React + Vite
+# 🚀 Prithwiraj Maji | High-Performance Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A cutting-edge, high-end digital portfolio built for the future. This project showcases a fusion of **Full-Stack Development**, **AI/LLM Engineering**, and **Cybersecurity** expertise through a premium, interactive editorial interface.
 
-Currently, two official plugins are available:
+![Portfolio Preview](https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Core:** React 19 + Vite 8
+- **Animations:** GSAP (GreenSock Animation Platform)
+- **Styling:** Vanilla CSS (Advanced Design System)
+- **Icons:** Lucide React
+- **Typography:** Outfit (Display) & Inter (Body)
 
-## Expanding the ESLint configuration
+## 💎 Premium Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Interactive HUD Interface:** Custom heads-up display overlays on projects for a technical, data-driven aesthetic.
+- **3D Expertise Grid:** Skill cards with real-time mouse tracking and 3D tilt interaction powered by GSAP.
+- **Cinematic Motion:** Smooth, high-end transitions and scroll-triggered reveals.
+- **High-Contrast Dark Mode:** A curated deep-space palette with neon accents and frosted glassmorphism.
+- **Noise Grain Texture:** A global analog overlay for a premium, non-flat visual depth.
+
+## 📁 Key Projects
+
+1.  **Federated Learning Supply Chain:** Distributed ML platform for supply chain optimization.
+2.  **SilentLoaderHunter:** Defensive toolkit for identifying hidden Windows persistence attacks.
+3.  **Money-Miners:** Advanced trading educational platform.
+4.  **Lunaria E-Commerce:** AI-integrated fashion retail experience (VTON).
+5.  **NotesVilla:** High-performance personal knowledge management system.
+6.  **Academywale-LMS:** Full-stack Learning Management System.
+
+## 🚀 Getting Started
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/Prithwiraj731/Portfolio.git
+    ```
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+3.  **Run development server:**
+    ```bash
+    npm run dev
+    ```
+4.  **Build for production:**
+    ```bash
+    npm run build
+    ```
+
+## 📬 Connect
+
+- **GitHub:** [Prithwiraj731](https://github.com/Prithwiraj731)
+- **LinkedIn:** [Prithwiraj Maji](https://www.linkedin.com/in/prithwiraj-mazumdar-963086291/)
+- **X (Twitter):** [@prithwi731](https://x.com/prithwi731)
+- **Email:** [prithwi1016@gmail.com](mailto:prithwi1016@gmail.com)
+
+---
+
+Built with ❤️ by Prithwiraj Maji
