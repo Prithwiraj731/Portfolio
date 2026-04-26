@@ -1,4 +1,4 @@
-# 🚀 Prithwiraj Maji | High-Performance Portfolio
+# 🚀 Prithwiraj Mazumdar | High-Performance Portfolio
 
 A cutting-edge, high-end digital portfolio built for the future. This project showcases a fusion of **Full-Stack Development**, **AI/LLM Engineering**, and **Cybersecurity** expertise through a premium, interactive editorial interface.
 
@@ -53,10 +53,10 @@ A cutting-edge, high-end digital portfolio built for the future. This project sh
 ## 📬 Connect
 
 - **GitHub:** [Prithwiraj731](https://github.com/Prithwiraj731)
-- **LinkedIn:** [Prithwiraj Maji](https://www.linkedin.com/in/prithwiraj-mazumdar-963086291/)
+- **LinkedIn:** [Prithwiraj Mazumdar](https://www.linkedin.com/in/prithwiraj-mazumdar-963086291/)
 - **X (Twitter):** [@prithwi731](https://x.com/prithwi731)
 - **Email:** [prithwi1016@gmail.com](mailto:prithwi1016@gmail.com)
 
 ---
 
-Built with ❤️ by Prithwiraj Maji
+Built with ❤️ by Prithwiraj Mazumdar
