@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# OS files
+desktop.ini
+.DS_Store
+
+# Agent Metadata
+.agent/
+
