@@ -7,11 +7,7 @@ export default function Footer() {
         <div className="footer__top">
           <div className="footer__brand">
             <a href="#home" className="footer__logo">
-              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="16" cy="16" r="15" stroke="currentColor" strokeWidth="2"/>
-                <path d="M10 22V10h3l5 8V10h3v12h-3l-5-8v8h-3z" fill="currentColor"/>
-              </svg>
-              Prithwiraj
+              <img src="/PORTFOLIO_LOGO.png" alt="Logo" className="header__logo-img" style={{ height: '32px' }} />
             </a>
             <p className="footer__brand-desc">{FOOTER.brand}</p>
             <div className="footer__social">
