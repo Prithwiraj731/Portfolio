@@ -22,6 +22,7 @@ export default function Header() {
   }, [menuOpen]);
 
   const handleNavClick = (e, href) => {
+    if (href.startsWith('https://wa.me/')) return; // Let WhatsApp links work normally
     e.preventDefault();
     setMenuOpen(false);
     const el = document.querySelector(href);
@@ -49,9 +50,14 @@ export default function Header() {
           </nav>
 
           <div className="header__actions">
-            <button className="header__cta" onClick={(e) => handleNavClick(e, '#contact')}>
+            <a 
+              href="https://wa.me/919832992240" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="header__cta"
+            >
               Let's Talk
-            </button>
+            </a>
             <button
               className={`header__menu-btn ${menuOpen ? 'open' : ''}`}
               onClick={() => setMenuOpen(!menuOpen)}
@@ -69,7 +75,14 @@ export default function Header() {
             {link.label}
           </a>
         ))}
-        <a href="#contact" className="btn btn--light" onClick={(e) => handleNavClick(e, '#contact')} style={{ marginTop: '1rem', fontSize: '1rem' }}>
+        <a 
+          href="https://wa.me/919832992240" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="btn btn--light" 
+          onClick={() => setMenuOpen(false)} 
+          style={{ marginTop: '1rem', fontSize: '1rem' }}
+        >
           Let's Talk
         </a>
       </nav>

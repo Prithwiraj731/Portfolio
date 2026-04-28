@@ -1,12 +1,20 @@
-import { useEffect, useRef } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { Send, MessageCircle } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import emailjs from '@emailjs/browser';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Cta() {
   const ref = useRef(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [status, setStatus] = useState({ type: '', message: '' });
+  const [isSending, setIsSending] = useState(false);
 
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -25,33 +33,131 @@ export default function Cta() {
     return () => ctx.revert();
   }, []);
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSending(true);
+    setStatus({ type: '', message: '' });
+
+    try {
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        title: 'New Portfolio Inquiry',
+      };
+
+      await emailjs.send(
+        'service_f3t36p7',
+        'template_gl70psu',
+        templateParams,
+        'uXmJwmkMkhhqzjk4O'
+      );
+
+      setStatus({ type: 'success', message: 'Message sent successfully! I will get back to you soon.' });
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setStatus({ type: 'error', message: 'Failed to send message. Please try again or use WhatsApp.' });
+    } finally {
+      setIsSending(false);
+    }
+  };
+
   return (
     <section className="cta" id="contact" ref={ref}>
       <div className="container">
         <div className="cta__inner">
           <div className="cta__content">
-            <h2 className="cta__title">LET'S BUILD THE FUTURE</h2>
+            <h2 className="cta__title">GET IN TOUCH</h2>
             <p className="cta__desc">
-              Looking for a dedicated developer to bring your vision to life? Let's collaborate on your next digital product or web application.
+              Whether you have a project in mind or just want to say hi, my inbox is always open. I'll get back to you as soon as I can!
             </p>
-            <a href="mailto:hello@example.com" className="btn btn--primary">
-              Start a Project <ArrowRight size={16} />
-            </a>
-          </div>
-          <div className="cta__image">
-            {/* Placeholder for futuristic image */}
-            <div style={{
-              width: '100%', height: '100%',
-              background: 'linear-gradient(45deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center'
-            }}>
-              <div style={{
-                width: '60px', height: '60px', borderRadius: '50%',
-                background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center'
-              }}>
-                <div style={{ width: '0', height: '0', borderTop: '8px solid transparent', borderBottom: '8px solid transparent', borderLeft: '12px solid white', marginLeft: '4px' }} />
+            
+            <form className="cta__form" onSubmit={handleSubmit}>
+              <div className="form-group">
+                <input 
+                  type="text" 
+                  name="name" 
+                  placeholder="Your Name" 
+                  required 
+                  value={formData.name}
+                  onChange={handleChange}
+                />
               </div>
+              <div className="form-group">
+                <input 
+                  type="email" 
+                  name="email" 
+                  placeholder="Your Email" 
+                  required 
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <textarea 
+                  name="message" 
+                  placeholder="Tell me what you need..." 
+                  rows="4" 
+                  required
+                  value={formData.message}
+                  onChange={handleChange}
+                ></textarea>
+              </div>
+              
+              <div className="cta__buttons">
+                <button 
+                  type="submit" 
+                  className="btn btn--primary" 
+                  disabled={isSending}
+                  style={{ opacity: isSending ? 0.7 : 1 }}
+                >
+                  {isSending ? 'Sending...' : 'Send Message'} <Send size={16} />
+                </button>
+                <a 
+                  href="https://wa.me/919832992240" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn btn--outline-light"
+                  style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+                >
+                  WhatsApp <MessageCircle size={16} />
+                </a>
+              </div>
+
+              {status.message && (
+                <div style={{ 
+                  marginTop: '1.5rem', 
+                  padding: '1rem', 
+                  borderRadius: '8px', 
+                  fontSize: '0.9rem',
+                  background: status.type === 'success' ? 'rgba(200, 255, 0, 0.1)' : 'rgba(255, 0, 0, 0.1)',
+                  color: status.type === 'success' ? 'var(--accent)' : '#ff4444',
+                  border: `1px solid ${status.type === 'success' ? 'rgba(200, 255, 0, 0.2)' : 'rgba(255, 0, 0, 0.2)'}`,
+                  animation: 'fadeIn 0.5s ease forwards'
+                }}>
+                  {status.message}
+                </div>
+              )}
+            </form>
+          </div>
+          
+          <div className="cta__info">
+            <div className="cta__info-item">
+              <h3>Let's collaborate</h3>
+              <p>I am currently available for freelance work and full-time positions.</p>
+            </div>
+            <div className="cta__info-item">
+              <h3>WhatsApp</h3>
+              <p>+91 98329 92240</p>
+            </div>
+            <div className="cta__info-item">
+              <h3>Email</h3>
+              <p>prithwi1016@gmail.com</p>
             </div>
           </div>
         </div>

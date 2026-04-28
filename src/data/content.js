@@ -1,7 +1,7 @@
 export const NAV_LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
-  { label: 'Expertise', href: '#services' },
+  { label: 'Expertise', href: '#expertise' },
   { label: 'Work', href: '#projects' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -238,18 +238,39 @@ export const PROJECTS = [
 
 export const TESTIMONIALS = [
   {
-    name: 'Alex Morgan',
-    role: 'CEO, TechVentures',
-    text: 'Prithwiraj is an exceptional developer. His attention to detail and ability to deliver complex features on time was instrumental to our success.',
+    name: 'Sarah Jenkins',
+    role: 'CEO, TechFlow Systems',
+    text: 'Prithwiraj is a rare talent who understands both the technical depth and the aesthetic requirements of a modern product. He delivered a complex AI-integrated dashboard that exceeded all our performance benchmarks.',
     rating: 5,
-    avatar: null,
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80',
   },
   {
-    name: 'Sarah Chen',
-    role: 'Product Manager, InnovateCo',
-    text: 'Working with Prithwiraj was a breeze. He brought our vision to life with a beautiful, high-performing application that users absolutely love.',
+    name: 'Michael Chen',
+    role: 'Product Lead, InnovateHQ',
+    text: 'The cybersecurity audit and the subsequent hardening Prithwiraj performed on our platform was top-notch. His attention to detail and proactive communication made the entire process seamless.',
     rating: 5,
-    avatar: null,
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80',
+  },
+  {
+    name: 'Amanda Thorne',
+    role: 'Founder, Lumina Design',
+    text: 'I\'ve worked with many developers, but Prithwiraj stands out for his design sensibility. He took our wireframes and turned them into a living, breathing interactive experience that our users absolutely love.',
+    rating: 5,
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80',
+  },
+  {
+    name: 'Robert Miller',
+    role: 'CTO, DataForge',
+    text: 'Exceptional full-stack skills. He architected our entire backend system and optimized our database queries, resulting in a 40% improvement in load times. A true professional.',
+    rating: 5,
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80',
+  },
+  {
+    name: 'Sophia Williams',
+    role: 'Operations Director, Global logistics',
+    text: 'The custom automation tools Prithwiraj built for our supply chain management have saved us hundreds of man-hours. His ability to understand business logic and translate it into code is remarkable.',
+    rating: 5,
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80',
   },
 ];
 
@@ -257,29 +278,28 @@ export const FOOTER = {
   brand: 'Building the future, one pixel and one algorithm at a time.',
   columns: [
     {
-      title: 'Navigation',
+      title: 'Company',
       links: [
         { label: 'Home', href: '#home' },
         { label: 'About', href: '#about' },
-        { label: 'Expertise', href: '#services' },
         { label: 'Work', href: '#projects' },
+        { label: 'Contact', href: '#contact' },
       ],
     },
     {
-      title: 'My Expertise',
+      title: 'Social',
       links: [
-        { label: 'Frontend Dev', href: '#services' },
-        { label: 'Backend Dev', href: '#services' },
-        { label: 'Mobile Apps', href: '#services' },
-      ],
-    },
-    {
-      title: 'Connect',
-      links: [
+        { label: 'Instagram', href: 'https://www.instagram.com/prithwi_raj_mazumdar' },
         { label: 'GitHub', href: 'https://github.com/Prithwiraj731' },
+        { label: 'Fiverr', href: 'https://www.fiverr.com/s/WE2DZgl' },
         { label: 'LinkedIn', href: 'https://www.linkedin.com/in/prithwiraj-mazumdar-963086291/' },
-        { label: 'X', href: 'https://x.com/prithwi731' },
-        { label: 'Email', href: 'mailto:[prithwi1016@gmail.com]' },
+      ],
+    },
+    {
+      title: 'Contact',
+      links: [
+        { label: 'Email', href: 'mailto:prithwi1016@gmail.com' },
+        { label: 'WhatsApp', href: 'https://wa.me/919832992240' },
       ],
     },
   ],

@@ -15,12 +15,12 @@ export default function Testimonials() {
 
     const ctx = gsap.context(() => {
       gsap.from('.testimonials__left > *', {
-        scrollTrigger: { trigger: ref.current, start: 'top 75%', once: true },
+        scrollTrigger: { trigger: ref.current, start: 'top 85%', once: true },
         opacity: 0, x: -50, filter: 'blur(10px)', duration: 1, stagger: 0.15, ease: 'power4.out',
       });
       gsap.from('.testimonial-card', {
-        scrollTrigger: { trigger: ref.current, start: 'top 75%', once: true },
-        opacity: 0, y: 60, rotationX: 15, transformOrigin: '50% 100%', duration: 1, stagger: 0.2, ease: 'power4.out',
+        scrollTrigger: { trigger: ref.current, start: 'top 85%', once: true },
+        opacity: 0, y: 40, rotationX: 10, transformOrigin: '50% 100%', duration: 1, stagger: 0.15, ease: 'power4.out',
       });
     }, ref);
     return () => ctx.revert();
@@ -41,14 +41,18 @@ export default function Testimonials() {
               <div className="testimonial-card__header">
                 <div className="testimonial-card__author">
                   <div className="testimonial-card__avatar">
-                    <div style={{
-                      width: '100%', height: '100%',
-                      background: `hsl(${i * 120}, 30%, 25%)`,
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      color: 'rgba(255,255,255,0.5)', fontSize: '1rem', fontWeight: 700
-                    }}>
-                      {t.name[0]}
-                    </div>
+                    {t.avatar ? (
+                      <img src={t.avatar} alt={t.name} />
+                    ) : (
+                      <div style={{
+                        width: '100%', height: '100%',
+                        background: `hsl(${i * 120}, 30%, 25%)`,
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        color: 'rgba(255,255,255,0.5)', fontSize: '1rem', fontWeight: 700
+                      }}>
+                        {t.name[0]}
+                      </div>
+                    )}
                   </div>
                   <div>
                     <div className="testimonial-card__name">{t.name}</div>

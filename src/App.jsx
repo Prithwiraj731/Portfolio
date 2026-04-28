@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -7,9 +7,27 @@ import Projects from './components/Projects';
 import Testimonials from './components/Testimonials';
 import Cta from './components/Cta';
 import Footer from './components/Footer';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
 
 function App() {
+  const [currentPage, setCurrentPage] = useState('home');
+
   useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash === '#privacy-policy') {
+        setCurrentPage('privacy');
+      } else if (hash === '#terms-of-service') {
+        setCurrentPage('terms');
+      } else {
+        setCurrentPage('home');
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    handleHashChange(); // Initial check
+
     const handleScroll = () => {
       const scrollProgress = document.getElementById('scroll-progress');
       if (scrollProgress) {
@@ -21,8 +39,14 @@ function App() {
     };
     
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
+
+  if (currentPage === 'privacy') return <PrivacyPolicy />;
+  if (currentPage === 'terms') return <TermsOfService />;
 
   return (
     <>
