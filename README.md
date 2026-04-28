@@ -2,7 +2,7 @@
 
 A cutting-edge, high-end digital portfolio built for the future. This project showcases a fusion of **Full-Stack Development**, **AI/LLM Engineering**, and **Cybersecurity** expertise through a premium, interactive editorial interface.
 
-![Portfolio Preview](https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80)
+![Portfolio Preview](./public/1742045052926.jpg)
 
 ---
 
