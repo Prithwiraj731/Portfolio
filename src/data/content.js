@@ -7,7 +7,7 @@ export const NAV_LINKS = [
 ];
 
 export const HERO = {
-  label: 'Hi, I am Prithwiraj',
+  label: 'Hi, I am Prithwiraj Mazumdar',
   title: ['FULL-STACK', 'DEVELOPER'],
   subtitle: 'I craft premium digital experiences through cutting-edge technology, intelligent design, and relentless innovation. Building the web of tomorrow, today.',
   stats: [
