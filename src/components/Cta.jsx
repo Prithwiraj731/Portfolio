@@ -112,9 +112,9 @@ export default function Cta() {
               <div className="cta__buttons">
                 <button 
                   type="submit" 
-                  className="btn btn--primary" 
+                  className="btn btn--outline-light" 
                   disabled={isSending}
-                  style={{ opacity: isSending ? 0.7 : 1 }}
+                  style={{ opacity: isSending ? 0.7 : 1, display: 'flex', alignItems: 'center', gap: '8px' }}
                 >
                   {isSending ? 'Sending...' : 'Send Message'} <Send size={16} />
                 </button>

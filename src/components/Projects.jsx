@@ -39,11 +39,22 @@ export default function Projects() {
     return () => observer.disconnect();
   }, []);
 
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
+    e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
+  };
+
   return (
     <section className="projects" id="projects" ref={ref}>
       <div className="container">
         <div className="projects__header">
-          <h2 className="projects__title">SELECTED WORK</h2>
+          <h2 className="projects__title">
+            SELECTED WORK
+            <span className="title-dot">.</span>
+          </h2>
           <p className="projects__subtitle">Featured projects showcasing my expertise across web, AI, and design.</p>
         </div>
         <div className="projects__grid">
@@ -57,8 +68,10 @@ export default function Projects() {
                 className={`project-card reveal ${project.featured ? 'project-card--featured' : ''}`} 
                 key={i}
                 style={isLink ? { display: 'block', textDecoration: 'none', color: 'inherit' } : {}}
+                onMouseMove={handleMouseMove}
                 {...linkProps}
               >
+                <div className="project-card__spotlight" />
                 <div className="project-card__hud">
                   <span className="project-card__number">0{i + 1}</span>
                   <div className="project-card__bar" />

@@ -56,7 +56,7 @@ export default function Header() {
               rel="noopener noreferrer"
               className="header__cta"
             >
-              Let's Talk
+              Let's Build
             </a>
             <button
               className={`header__menu-btn ${menuOpen ? 'open' : ''}`}

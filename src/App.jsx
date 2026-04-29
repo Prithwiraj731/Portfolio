@@ -45,20 +45,23 @@ function App() {
     };
   }, []);
 
-  if (currentPage === 'privacy') return <PrivacyPolicy />;
-  if (currentPage === 'terms') return <TermsOfService />;
-
   return (
     <>
       <div id="scroll-progress" className="scroll-progress" style={{ transform: 'scaleX(0)' }}></div>
       <Header />
       <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Testimonials />
-        <Cta />
+        {currentPage === 'privacy' && <PrivacyPolicy />}
+        {currentPage === 'terms' && <TermsOfService />}
+        {currentPage === 'home' && (
+          <>
+            <Hero />
+            <About />
+            <Skills />
+            <Projects />
+            <Testimonials />
+            <Cta />
+          </>
+        )}
       </main>
       <Footer />
     </>

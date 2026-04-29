@@ -15,7 +15,7 @@ export default function TermsOfService() {
     <div className="legal-page">
       <div className="container">
         <header className="legal-page__header">
-          <a href="#" onClick={handleBack} className="btn btn--outline btn--sm">
+          <a href="#" onClick={handleBack} className="btn btn--outline-light" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '0.5rem 1rem', fontSize: '0.9rem', marginBottom: '2rem' }}>
             <ArrowLeft size={16} /> Back to Home
           </a>
           <div className="legal-page__title-wrap">
