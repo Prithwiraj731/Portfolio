@@ -1,9 +1,10 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ABOUT } from '../data/content';
-import { Code2, Brain, Palette } from 'lucide-react';
+import { Code2, Brain, Palette, Download, Eye, EyeOff, FileText } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import heroImage2 from '../assets/hero2.png';
+import resumePdf from '../assets/MY_RESUME.pdf';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,6 +12,7 @@ const ICON_MAP = { Code2, Brain, Palette };
 
 export default function About() {
   const ref = useRef(null);
+  const [showPreview, setShowPreview] = useState(false);
 
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -62,6 +64,48 @@ export default function About() {
           <a href="#services" className="btn btn--light" onClick={(e) => { e.preventDefault(); document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' }); }}>
             Explore My Expertise
           </a>
+
+          {/* ── Resume Section ── */}
+          <div className="resume-section">
+            <div className="resume-section__header">
+              <div className="resume-section__icon">
+                <FileText size={20} />
+              </div>
+              <span className="resume-section__label">My Resume</span>
+            </div>
+            <div className="resume-section__actions">
+              <a
+                href={resumePdf}
+                download="Prithwiraj_Resume.pdf"
+                className="resume-btn resume-btn--download"
+                id="resume-download-btn"
+              >
+                <Download size={18} />
+                <span>Download Resume</span>
+              </a>
+              <button
+                type="button"
+                className={`resume-btn resume-btn--preview ${showPreview ? 'resume-btn--active' : ''}`}
+                onClick={() => setShowPreview((prev) => !prev)}
+                id="resume-preview-btn"
+              >
+                {showPreview ? <EyeOff size={18} /> : <Eye size={18} />}
+                <span>{showPreview ? 'Hide Preview' : 'Preview Resume'}</span>
+              </button>
+            </div>
+
+            <div className={`resume-preview ${showPreview ? 'resume-preview--open' : ''}`}>
+              <div className="resume-preview__inner">
+                {showPreview && (
+                  <iframe
+                    src={`${resumePdf}#toolbar=0&navpanes=0`}
+                    title="Resume Preview"
+                    className="resume-preview__iframe"
+                  />
+                )}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
