@@ -4,7 +4,6 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
-import Testimonials from './components/Testimonials';
 import Cta from './components/Cta';
 import Footer from './components/Footer';
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -58,7 +57,6 @@ function App() {
             <About />
             <Skills />
             <Projects />
-            <Testimonials />
             <Cta />
           </>
         )}
