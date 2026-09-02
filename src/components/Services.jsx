@@ -117,7 +117,7 @@ export default function Services() {
             {/* Action Buttons */}
             <div className="agency-banner__actions">
               <a 
-                href="https://zeropoint.vercel.app" 
+                href="https://zeropoint-security.vercel.app" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="discover-services-btn"

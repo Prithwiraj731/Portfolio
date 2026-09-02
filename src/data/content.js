@@ -412,7 +412,7 @@ export const FOOTER = {
         { label: 'Home', href: '#home' },
         { label: 'About', href: '#about' },
         { label: 'Services', href: '#services' },
-        { label: 'ZEROPOINT (Agency)', href: 'https://zeropoint.vercel.app', target: '_blank' },
+        { label: 'ZEROPOINT (Agency)', href: 'https://zeropoint-security.vercel.app', target: '_blank' },
         { label: 'Work', href: '#projects' },
         { label: 'Contact', href: '#contact' },
       ],
