@@ -1,7 +1,7 @@
 export const NAV_LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
-  { label: 'Expertise', href: '#expertise' },
+  { label: 'Services', href: '#services' },
   { label: 'Work', href: '#projects' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -411,6 +411,8 @@ export const FOOTER = {
       links: [
         { label: 'Home', href: '#home' },
         { label: 'About', href: '#about' },
+        { label: 'Services', href: '#services' },
+        { label: 'ZEROPOINT (Agency)', href: 'https://clinovate-agency-alpha.vercel.app', target: '_blank' },
         { label: 'Work', href: '#projects' },
         { label: 'Contact', href: '#contact' },
       ],

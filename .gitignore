@@ -30,3 +30,6 @@ desktop.ini
 # Agent Metadata
 .agent/
 
+# Sub-projects / Separate Repositories
+Clinovate/
+

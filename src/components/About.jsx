@@ -62,7 +62,7 @@ export default function About() {
             })}
           </div>
           <a href="#services" className="btn btn--light" onClick={(e) => { e.preventDefault(); document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' }); }}>
-            Explore My Expertise
+            Explore My Services
           </a>
 
           {/* ── Resume Section ── */}

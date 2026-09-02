@@ -67,11 +67,20 @@ export default function Footer() {
             <div className="footer__column" key={i}>
               <h4>{col.title}</h4>
               <ul>
-                {col.links.map((link, j) => (
-                  <li key={j}>
-                    <a href={link.href}>{link.label}</a>
-                  </li>
-                ))}
+                {col.links.map((link, j) => {
+                  const isExternal = link.href.startsWith('http');
+                  return (
+                    <li key={j}>
+                      <a 
+                        href={link.href}
+                        target={isExternal ? '_blank' : undefined}
+                        rel={isExternal ? 'noopener noreferrer' : undefined}
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}
