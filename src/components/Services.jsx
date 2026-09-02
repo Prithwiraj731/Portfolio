@@ -117,7 +117,7 @@ export default function Services() {
             {/* Action Buttons */}
             <div className="agency-banner__actions">
               <a 
-                href="https://clinovate-agency-alpha.vercel.app" 
+                href="https://zeropoint.vercel.app" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="discover-services-btn"
