@@ -73,7 +73,7 @@ export default function Hero() {
             <a href="#projects" className="btn btn--primary" onClick={(e) => { e.preventDefault(); document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' }); }}>
               View My Work <ArrowRight size={16} />
             </a>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn--outline">
+            <a href="/MY-RESUME.pdf" target="_blank" rel="noopener noreferrer" className="btn btn--outline">
               Download Resume
             </a>
           </div>
