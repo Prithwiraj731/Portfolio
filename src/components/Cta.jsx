@@ -48,6 +48,7 @@ export default function Cta() {
         email: formData.email,
         message: formData.message,
         title: 'New Portfolio Inquiry',
+        time: new Date().toLocaleString(),
       };
 
       await emailjs.send(
