@@ -709,7 +709,393 @@ h1,h2,h3,h4,h5,h6{font-family:var(--font-display);line-height:1.1;font-weight:80
 .testimonial-card__text{font-size:1.05rem;color:rgba(255,255,255,0.85);line-height:1.8;font-style:italic;position:relative;z-index:2}
 .testimonial-card__text::before{content:'"';font-family:var(--font-display);font-size:4rem;color:rgba(255,255,255,0.05);position:absolute;top:-1.5rem;left:-1rem;line-height:1}
 
-/* obsolete media query removed */
+/* ===== DIGITAL PRESENCE ===== */
+.presence {
+  background: var(--bg-dark);
+  padding: var(--section-py) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+.presence::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.02) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+.presence .container {
+  position: relative;
+  z-index: 2;
+}
+
+.presence__header {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 3.5rem;
+  position: relative;
+  z-index: 2;
+}
+.presence__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(0, 255, 132, 0.04);
+  border: 1px solid rgba(0, 255, 132, 0.15);
+  padding: 0.4rem 1.1rem;
+  border-radius: 100px;
+  margin-bottom: 1.25rem;
+}
+.presence__badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  display: inline-block;
+}
+.presence__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #FFFFFF 30%, rgba(255, 255, 255, 0.6) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.presence__subtitle {
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+/* 2-Column Responsive Presence Grid */
+.presence__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Base Presence Card */
+.presence-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  background: rgba(15, 15, 15, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 2rem;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.35s cubic-bezier(0.2, 0, 0.2, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease,
+              background 0.35s ease;
+}
+
+.presence-card:hover {
+  transform: translateY(-5px);
+  background: rgba(20, 20, 20, 0.88);
+  border-color: var(--card-border, rgba(255, 255, 255, 0.25));
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 35px var(--card-glow, rgba(255, 255, 255, 0.05));
+}
+
+.presence-card:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0, 255, 132, 0.25), 0 20px 40px rgba(0, 0, 0, 0.5);
+  transform: translateY(-4px);
+}
+
+/* Ambient Platform Glow */
+.presence-card__glow {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, var(--card-glow, rgba(255, 255, 255, 0.08)) 0%, transparent 70%);
+  top: -90px;
+  right: -90px;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.3;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: 0;
+}
+.presence-card:hover .presence-card__glow {
+  opacity: 0.85;
+  transform: scale(1.3);
+}
+
+/* Mouse Follow Spotlight */
+.presence-card__spotlight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    var(--card-glow, rgba(255, 255, 255, 0.06)),
+    transparent 55%
+  );
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.presence-card:hover .presence-card__spotlight {
+  opacity: 1;
+}
+
+/* Card Header */
+.presence-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.75rem;
+  position: relative;
+  z-index: 2;
+}
+.presence-card__platform-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.presence-card__icon-box {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--card-accent, #fff);
+  transition: transform 0.35s var(--ease),
+              border-color 0.35s ease,
+              background 0.35s ease,
+              box-shadow 0.35s ease;
+}
+.presence-card:hover .presence-card__icon-box {
+  transform: scale(1.08);
+  border-color: var(--card-border);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 15px var(--card-glow);
+}
+.presence-card__icon {
+  display: block;
+}
+.presence-card__tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+.presence-card:hover .presence-card__tag {
+  color: var(--text-light);
+}
+
+.presence-card__indicator {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted-dark);
+  border: 1px solid transparent;
+  transition: all 0.3s var(--ease);
+}
+.presence-card:hover .presence-card__indicator {
+  color: var(--text-light);
+  transform: translate(2px, -2px);
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Card Body */
+.presence-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 1.5rem;
+}
+.presence-card__identity {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+.presence-card__avatar-pill {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.35s ease, border-color 0.35s ease;
+}
+.presence-card:hover .presence-card__avatar-pill {
+  transform: scale(1.05);
+  border-color: var(--card-border);
+}
+.presence-card__avatar-initials {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-light);
+  letter-spacing: 0.05em;
+}
+.presence-card__status-dot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid #0f0f0f;
+  box-shadow: 0 0 6px var(--accent);
+}
+
+.presence-card__name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-light);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.presence-card__handle {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted-dark);
+  margin-top: 0.2rem;
+}
+.presence-card__desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  min-height: 2.8rem;
+  transition: color 0.3s ease;
+}
+.presence-card:hover .presence-card__desc {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* Hairline Divider */
+.presence-card__divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  margin-top: auto;
+  margin-bottom: 1.25rem;
+  position: relative;
+  z-index: 2;
+  transition: background 0.3s ease;
+}
+.presence-card:hover .presence-card__divider {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Card Footer */
+.presence-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.presence-card__context {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted-dark);
+  transition: color 0.3s ease;
+}
+.presence-card:hover .presence-card__context {
+  color: var(--text-muted);
+}
+.presence-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-light);
+  transition: color 0.3s ease;
+}
+.presence-card:hover .presence-card__cta {
+  color: var(--card-accent, #fff);
+}
+.presence-card__cta-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s var(--ease);
+}
+.presence-card:hover .presence-card__cta-arrow {
+  transform: translateX(4px);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 900px) {
+  .presence__grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .presence-card {
+    padding: 1.75rem 1.5rem;
+  }
+  .presence-card__desc {
+    min-height: auto;
+  }
+  .presence__header {
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .presence-card {
+    padding: 1.5rem 1.25rem;
+  }
+  .presence-card__name {
+    font-size: 1.15rem;
+  }
+  .presence-card__footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .presence-card__cta {
+    align-self: flex-end;
+  }
+}
 
 /* ===== CTA ===== */
 .cta{background:var(--bg-dark);padding:var(--section-py) 0;border-top:1px solid var(--border-dark);position:relative;overflow:hidden}

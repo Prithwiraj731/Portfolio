@@ -5,6 +5,7 @@ import About from './components/About';
 import Services from './components/Services';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
+import DigitalPresence from './components/DigitalPresence';
 import Cta from './components/Cta';
 import Footer from './components/Footer';
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -59,6 +60,7 @@ function App() {
             <Services />
             <Skills />
             <Projects />
+            <DigitalPresence />
             <Cta />
           </>
         )}

@@ -33,3 +33,6 @@ desktop.ini
 # Sub-projects / Separate Repositories
 Clinovate/
 
+# Scratch & Temporary files
+scratch/
+
