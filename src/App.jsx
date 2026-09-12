@@ -56,11 +56,11 @@ function App() {
         {currentPage === 'home' && (
           <>
             <Hero />
+            <DigitalPresence />
             <About />
             <Services />
             <Skills />
             <Projects />
-            <DigitalPresence />
             <Cta />
           </>
         )}

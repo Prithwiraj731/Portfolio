@@ -193,10 +193,6 @@ export default function DigitalPresence() {
       <div className="container">
         {/* Section Header */}
         <div className="presence__header">
-          <div className="presence__badge">
-            <span className="presence__badge-dot" />
-            <span>{DIGITAL_PRESENCE.badge}</span>
-          </div>
           <h2 className="presence__title" id="presence-heading">
             {DIGITAL_PRESENCE.title}
             <span className="title-dot">.</span>

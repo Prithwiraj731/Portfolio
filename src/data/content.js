@@ -437,8 +437,7 @@ export const FOOTER = {
 };
 
 export const DIGITAL_PRESENCE = {
-  badge: '// ONLINE PRESENCE',
-  title: 'IDENTITY // ONLINE',
+  title: 'IDENTITY',
   subtitle: 'Find me across the places where I build, explore, share and connect.',
   profiles: [
     {
