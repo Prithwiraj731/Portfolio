@@ -27,6 +27,10 @@ export default function About() {
         scrollTrigger: { trigger: ref.current, start: 'top 75%', once: true },
         opacity: 0, y: 30, duration: 0.6, stagger: 0.12, ease: 'power3.out',
       });
+      gsap.from('.resume-section', {
+        scrollTrigger: { trigger: '.resume-section', start: 'top 85%', once: true },
+        opacity: 0, y: 30, duration: 0.6, ease: 'power3.out',
+      });
     }, ref);
     return () => ctx.revert();
   }, []);
@@ -34,44 +38,51 @@ export default function About() {
   return (
     <section className="about" id="about" ref={ref}>
       <div className="container">
-        <div className="about__visual">
-          <div className="about__image">
-            <img src={heroImage2} alt="About visualization" style={{ width: '100%', height: '100%', objectFit: 'cover', background: 'transparent' }} />
+        <div className="about__grid">
+          <div className="about__visual">
+            <div className="about__image">
+              <img src={heroImage2} alt="About visualization" style={{ width: '100%', height: '100%', objectFit: 'cover', background: 'transparent' }} />
+            </div>
+            <div className="about__badge">{ABOUT.badge}</div>
           </div>
-          <div className="about__badge">{ABOUT.badge}</div>
+
+          <div className="about__content">
+            <div className="about__label">{ABOUT.label}</div>
+            <h2 className="about__title">{ABOUT.title}</h2>
+            <p className="about__desc">{ABOUT.desc}</p>
+            <div className="about__features">
+              {ABOUT.features.map((f, i) => {
+                const Icon = ICON_MAP[f.icon];
+                return (
+                  <div className="about__feature" key={i}>
+                    <div className="about__feature-icon">
+                      {Icon && <Icon />}
+                    </div>
+                    <div>
+                      <h4>{f.title}</h4>
+                      <p>{f.desc}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <a href="#services" className="btn btn--light" onClick={(e) => { e.preventDefault(); document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' }); }}>
+              Explore My Services
+            </a>
+          </div>
         </div>
 
-        <div className="about__content">
-          <div className="about__label">{ABOUT.label}</div>
-          <h2 className="about__title">{ABOUT.title}</h2>
-          <p className="about__desc">{ABOUT.desc}</p>
-          <div className="about__features">
-            {ABOUT.features.map((f, i) => {
-              const Icon = ICON_MAP[f.icon];
-              return (
-                <div className="about__feature" key={i}>
-                  <div className="about__feature-icon">
-                    {Icon && <Icon />}
-                  </div>
-                  <div>
-                    <h4>{f.title}</h4>
-                    <p>{f.desc}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          <a href="#services" className="btn btn--light" onClick={(e) => { e.preventDefault(); document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' }); }}>
-            Explore My Services
-          </a>
-
-          {/* ── Resume Section ── */}
-          <div className="resume-section">
+        {/* ── Resume Section (Full-Width Row) ── */}
+        <div className="resume-section">
+          <div className="resume-section__bar">
             <div className="resume-section__header">
               <div className="resume-section__icon">
                 <FileText size={20} />
               </div>
-              <span className="resume-section__label">My Resume</span>
+              <div className="resume-section__meta">
+                <span className="resume-section__label">My Resume</span>
+                <span className="resume-section__sublabel">Curriculum Vitae · Tech Stack & Experience</span>
+              </div>
             </div>
             <div className="resume-section__actions">
               <a
@@ -93,17 +104,17 @@ export default function About() {
                 <span>{showPreview ? 'Hide Preview' : 'Preview Resume'}</span>
               </button>
             </div>
+          </div>
 
-            <div className={`resume-preview ${showPreview ? 'resume-preview--open' : ''}`}>
-              <div className="resume-preview__inner">
-                {showPreview && (
-                  <iframe
-                    src={`${resumePdf}#toolbar=0&navpanes=0`}
-                    title="Resume Preview"
-                    className="resume-preview__iframe"
-                  />
-                )}
-              </div>
+          <div className={`resume-preview ${showPreview ? 'resume-preview--open' : ''}`}>
+            <div className="resume-preview__inner">
+              {showPreview && (
+                <iframe
+                  src={`${resumePdf}#toolbar=0&navpanes=0`}
+                  title="Resume Preview"
+                  className="resume-preview__iframe"
+                />
+              )}
             </div>
           </div>
         </div>
