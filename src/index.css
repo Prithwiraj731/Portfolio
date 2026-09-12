@@ -709,7 +709,7 @@ h1,h2,h3,h4,h5,h6{font-family:var(--font-display);line-height:1.1;font-weight:80
 .testimonial-card__text{font-size:1.05rem;color:rgba(255,255,255,0.85);line-height:1.8;font-style:italic;position:relative;z-index:2}
 .testimonial-card__text::before{content:'"';font-family:var(--font-display);font-size:4rem;color:rgba(255,255,255,0.05);position:absolute;top:-1.5rem;left:-1rem;line-height:1}
 
-/* ===== DIGITAL PRESENCE ===== */
+/* ===== DIGITAL PRESENCE — 3D COLLECTIBLE PROFILE IDENTITY CARDS ===== */
 .presence {
   background: var(--bg-dark);
   padding: var(--section-py) 0;
@@ -721,7 +721,7 @@ h1,h2,h3,h4,h5,h6{font-family:var(--font-display);line-height:1.1;font-weight:80
   content: '';
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.02) 0%, transparent 70%);
+  background-image: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 65%);
   pointer-events: none;
   z-index: 1;
 }
@@ -732,8 +732,8 @@ h1,h2,h3,h4,h5,h6{font-family:var(--font-display);line-height:1.1;font-weight:80
 
 .presence__header {
   text-align: center;
-  max-width: 780px;
-  margin: 0 auto 3.5rem;
+  max-width: 800px;
+  margin: 0 auto 4rem;
   position: relative;
   z-index: 2;
 }
@@ -763,7 +763,7 @@ h1,h2,h3,h4,h5,h6{font-family:var(--font-display);line-height:1.1;font-weight:80
 }
 .presence__title {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1.1;
@@ -774,326 +774,301 @@ h1,h2,h3,h4,h5,h6{font-family:var(--font-display);line-height:1.1;font-weight:80
   -webkit-text-fill-color: transparent;
 }
 .presence__subtitle {
-  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
   color: var(--text-muted);
   line-height: 1.7;
-  max-width: 580px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
-/* 2-Column Responsive Presence Grid */
-.presence__grid {
+/* Collectibles 2-Column Grid */
+.presence__grid-collectibles {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.25rem;
+  max-width: 1120px;
+  margin: 0 auto;
   position: relative;
   z-index: 2;
 }
 
-/* Base Presence Card */
-.presence-card {
+/* 3D Collectible Profile Card */
+.collectible-card {
   display: flex;
   flex-direction: column;
   text-decoration: none;
   color: inherit;
-  background: rgba(15, 15, 15, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: var(--radius-lg);
-  padding: 2.25rem 2rem;
+  background: #111114;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 32px;
+  padding: 2.25rem 2.25rem 2rem;
   position: relative;
   overflow: hidden;
   cursor: pointer;
   outline: none;
-  transition: transform 0.35s cubic-bezier(0.2, 0, 0.2, 1),
-              border-color 0.35s ease,
-              box-shadow 0.35s ease,
-              background 0.35s ease;
+  box-shadow:
+    0 14px 36px -10px rgba(0, 0, 0, 0.65),
+    0 2px 6px -1px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09);
+  transition: transform 0.45s cubic-bezier(0.2, 0, 0.2, 1),
+              box-shadow 0.45s cubic-bezier(0.2, 0, 0.2, 1),
+              border-color 0.4s ease,
+              background 0.4s ease;
 }
 
-.presence-card:hover {
-  transform: translateY(-5px);
-  background: rgba(20, 20, 20, 0.88);
+.collectible-card__surface {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 38%, var(--card-glow, rgba(255, 255, 255, 0.06)) 0%, transparent 68%);
+  pointer-events: none;
+  opacity: 0.45;
+  transition: opacity 0.5s ease;
+  z-index: 0;
+}
+.collectible-card:hover .collectible-card__surface {
+  opacity: 0.9;
+}
+
+.collectible-card:hover {
+  transform: translateY(-8px);
+  background: #151519;
   border-color: var(--card-border, rgba(255, 255, 255, 0.25));
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 35px var(--card-glow, rgba(255, 255, 255, 0.05));
+  box-shadow:
+    0 30px 65px -15px rgba(0, 0, 0, 0.85),
+    0 0 45px var(--card-glow, transparent),
+    0 0 0 1px var(--card-border, rgba(255, 255, 255, 0.25)),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
-.presence-card:focus-visible {
+.collectible-card:focus-visible {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(0, 255, 132, 0.25), 0 20px 40px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0 3px rgba(0, 255, 132, 0.25), 0 25px 50px rgba(0, 0, 0, 0.7);
   transform: translateY(-4px);
 }
 
-/* Ambient Platform Glow */
-.presence-card__glow {
-  position: absolute;
-  width: 240px;
-  height: 240px;
-  background: radial-gradient(circle, var(--card-glow, rgba(255, 255, 255, 0.08)) 0%, transparent 70%);
-  top: -90px;
-  right: -90px;
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: 0.3;
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  z-index: 0;
-}
-.presence-card:hover .presence-card__glow {
-  opacity: 0.85;
-  transform: scale(1.3);
-}
-
-/* Mouse Follow Spotlight */
-.presence-card__spotlight {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    var(--card-glow, rgba(255, 255, 255, 0.06)),
-    transparent 55%
-  );
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
-.presence-card:hover .presence-card__spotlight {
-  opacity: 1;
-}
-
-/* Card Header */
-.presence-card__header {
+/* Card Top: Platform Info & Status */
+.collectible-card__top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.75rem;
   position: relative;
   z-index: 2;
 }
-.presence-card__platform-badge {
+.collectible-card__platform-meta {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
 }
-.presence-card__icon-box {
-  width: 38px;
-  height: 38px;
+.collectible-card__platform-icon {
+  width: 34px;
+  height: 34px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--card-accent, #fff);
-  transition: transform 0.35s var(--ease),
-              border-color 0.35s ease,
-              background 0.35s ease,
-              box-shadow 0.35s ease;
+  transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease;
 }
-.presence-card:hover .presence-card__icon-box {
+.collectible-card:hover .collectible-card__platform-icon {
   transform: scale(1.08);
-  border-color: var(--card-border);
-  background: rgba(255, 255, 255, 0.06);
-  box-shadow: 0 0 15px var(--card-glow);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--card-border, rgba(255, 255, 255, 0.25));
 }
-.presence-card__icon {
-  display: block;
+.collectible-card__platform-name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-light);
+  letter-spacing: 0.01em;
 }
-.presence-card__tag {
+.collectible-card__top-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+.collectible-card__status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  transition: color 0.3s ease;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.28rem 0.7rem;
+  border-radius: 100px;
 }
-.presence-card:hover .presence-card__tag {
-  color: var(--text-light);
+.collectible-card__status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--card-accent, #00ff84);
+  box-shadow: 0 0 6px var(--card-accent, #00ff84);
 }
-
-.presence-card__indicator {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+.collectible-card__out-indicator {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--text-muted-dark);
-  border: 1px solid transparent;
-  transition: all 0.3s var(--ease);
+  transition: color 0.3s ease, transform 0.3s ease;
 }
-.presence-card:hover .presence-card__indicator {
+.collectible-card:hover .collectible-card__out-indicator {
   color: var(--text-light);
   transform: translate(2px, -2px);
-  border-color: rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
 }
 
-/* Card Body */
-.presence-card__body {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+/* Card Main: Primary 3D Visual Hero */
+.collectible-card__visual-stage {
   position: relative;
-  z-index: 2;
-  margin-bottom: 1.5rem;
-}
-.presence-card__identity {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-}
-.presence-card__avatar-pill {
-  position: relative;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  height: 290px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  transition: transform 0.35s ease, border-color 0.35s ease;
+  margin: 1.5rem 0 1.75rem;
+  z-index: 1;
 }
-.presence-card:hover .presence-card__avatar-pill {
-  transform: scale(1.05);
-  border-color: var(--card-border);
-}
-.presence-card__avatar-initials {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--text-light);
-  letter-spacing: 0.05em;
-}
-.presence-card__status-dot {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--accent);
-  border: 2px solid #0f0f0f;
-  box-shadow: 0 0 6px var(--accent);
-}
-
-.presence-card__name {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--text-light);
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-}
-.presence-card__handle {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-muted-dark);
-  margin-top: 0.2rem;
-}
-.presence-card__desc {
-  font-size: 0.92rem;
-  color: var(--text-muted);
-  line-height: 1.6;
-  min-height: 2.8rem;
-  transition: color 0.3s ease;
-}
-.presence-card:hover .presence-card__desc {
-  color: rgba(255, 255, 255, 0.88);
-}
-
-/* Hairline Divider */
-.presence-card__divider {
+.collectible-card__avatar-pod {
+  position: relative;
   width: 100%;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.06);
-  margin-top: auto;
-  margin-bottom: 1.25rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.collectible-card__avatar-img {
+  max-height: 270px;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.55));
+  transition: transform 0.45s cubic-bezier(0.2, 0, 0.2, 1),
+              filter 0.45s ease;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.collectible-card:hover .collectible-card__avatar-img {
+  transform: scale(1.05) translateY(-5px);
+  filter: drop-shadow(0 25px 40px rgba(0, 0, 0, 0.75));
+}
+
+/* Card Bottom: Editorial Details & Pill CTA */
+.collectible-card__bottom {
   position: relative;
   z-index: 2;
-  transition: background 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
-.presence-card:hover .presence-card__divider {
-  background: rgba(255, 255, 255, 0.12);
+.collectible-card__meta {
+  margin-bottom: 1.35rem;
 }
-
-/* Card Footer */
-.presence-card__footer {
+.collectible-card__name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-light);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.collectible-card__desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-top: 0.35rem;
+}
+.collectible-card__actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
-  z-index: 2;
+  padding-top: 1.15rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
-.presence-card__context {
+.collectible-card__handle {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+  font-size: 0.78rem;
   color: var(--text-muted-dark);
   transition: color 0.3s ease;
 }
-.presence-card:hover .presence-card__context {
+.collectible-card:hover .collectible-card__handle {
   color: var(--text-muted);
 }
-.presence-card__cta {
+.collectible-card__cta-pill {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.85rem;
-  font-weight: 600;
+  padding: 0.55rem 1.25rem;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: var(--text-light);
-  transition: color 0.3s ease;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
-.presence-card:hover .presence-card__cta {
-  color: var(--card-accent, #fff);
+.collectible-card:hover .collectible-card__cta-pill {
+  background: var(--text-light);
+  color: var(--bg-dark);
+  border-color: var(--text-light);
+  transform: scale(1.02);
 }
-.presence-card__cta-arrow {
+.collectible-card__cta-arrow {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s var(--ease);
+  transition: transform 0.3s ease;
 }
-.presence-card:hover .presence-card__cta-arrow {
+.collectible-card:hover .collectible-card__cta-arrow {
   transform: translateX(4px);
 }
 
 /* Responsive Breakpoints */
 @media (max-width: 900px) {
-  .presence__grid {
+  .presence__grid-collectibles {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
+    max-width: 460px;
+    gap: 1.75rem;
   }
-  .presence-card {
-    padding: 1.75rem 1.5rem;
+  .collectible-card {
+    padding: 1.75rem 1.75rem 1.5rem;
+    border-radius: 28px;
   }
-  .presence-card__desc {
-    min-height: auto;
+  .collectible-card__visual-stage {
+    height: 250px;
+    margin: 1.25rem 0;
+  }
+  .collectible-card__avatar-img {
+    max-height: 235px;
   }
   .presence__header {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2.75rem;
   }
 }
 
 @media (max-width: 480px) {
-  .presence-card {
-    padding: 1.5rem 1.25rem;
+  .collectible-card {
+    padding: 1.5rem 1.25rem 1.25rem;
+    border-radius: 24px;
   }
-  .presence-card__name {
-    font-size: 1.15rem;
+  .collectible-card__name {
+    font-size: 1.22rem;
   }
-  .presence-card__footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
+  .collectible-card__visual-stage {
+    height: 220px;
   }
-  .presence-card__cta {
-    align-self: flex-end;
+  .collectible-card__avatar-img {
+    max-height: 205px;
+  }
+  .collectible-card__actions {
+    flex-direction: row;
+    gap: 0.5rem;
   }
 }
 
